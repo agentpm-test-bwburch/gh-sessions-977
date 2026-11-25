@@ -7,4 +7,11 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ok
+      - uses: actions/checkout@v4
+      - name: Repository checks
+        run: |
+          if [ -f ci/check.sh ]; then
+            bash ci/check.sh
+          else
+            echo ok
+          fi
